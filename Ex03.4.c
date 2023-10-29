@@ -6,7 +6,7 @@ int main(){
 	int n;
 	scanf("%d", &n);
 	int ketQua = 0;
-	int i;
+	int i; //ver dev c++ không nhan khai bao ben trong ham 
 	for ( i = 1; i<=n; i++) {
 		ketQua = ketQua + pow(i, 2);
 	}	
