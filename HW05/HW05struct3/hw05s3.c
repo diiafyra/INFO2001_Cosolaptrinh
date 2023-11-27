@@ -85,8 +85,9 @@ void displayData(struct Employee list){
         }
     }
     if(f = 0 || list[i].role != "\0"){
-    	printf("khong co nv nao co id nhu tren \n");
+    	printf("Khong co nv nao co id nhu tren \n");
     }
+    getchar();
 }
 
 static int i = 0; //giu lai gia tri cua i sau moi lan goi ham
@@ -197,6 +198,7 @@ void deleteP(struct Employee list[], int n){
                 deleteStruct(list, j);
             }   
             f = 1;
+			printf("Da xoa nhan vien\n");
             break;
         }
     }
@@ -204,6 +206,7 @@ void deleteP(struct Employee list[], int n){
         printf("Khong co nv nao co id nhu tren \n");
     }
     i--;
+    getchar();
 }
 
 void sortNameAZ(struct Employee list[], int n){
