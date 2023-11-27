@@ -94,7 +94,7 @@ static int i = 0; //giu lai gia tri cua i sau moi lan goi ham
 void addP(struct Employee list[], int n) {
 
     int f;
-    getchar();
+    //getchar();
     do {
         f = 0;
         int a, b;
