@@ -2,7 +2,7 @@
 #include <string.h>
 #include "hw05s12.h"
 
-//check dau vao
+//check dauvao
 int isInteger() {
 	char check[50];
 	//getchar();

@@ -2,6 +2,7 @@
 #include <string.h>
 #include "hw05s3.h"
 
+
 int main(){
 	//printf("thu");
 	struct Employee list[1000];

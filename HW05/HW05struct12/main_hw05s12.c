@@ -122,7 +122,12 @@ int main(){
 		printf("Nhap so: \n");
 		printf("1. Cap nhat thong tin \n2. Sap xep sinh vien theo ten \n3. Sap xep sinh vien theo id \n4. Tim kiem sinh vien theo ten \n5. Tim kiem sinh vien theo id \n0. Ket thuc");
 		printf("\n");
-		scanf("%d", &req);
+		req = isInteger();
+		if(req == 0){
+			printf("HAY NHAP VAO 1 SO: \n");
+			signal = 0;
+			continue;
+		}
 
 		if(req == 1){
 			updateData(list, n);
