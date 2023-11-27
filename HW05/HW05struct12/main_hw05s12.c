@@ -9,9 +9,9 @@ int main(){
 		f=0;
 		printf("Nhap vao so sv: ");
 		n = isInteger(); //neu de isInteger vao if else thi se khien doc 2 lan ham isInteger
-		if(n == 0){
+		if(n <= 0){
 			//printf("%d", isInteger(input));
-			printf("HAY NHAP VAO 1 SO. \n");
+			printf("HAY NHAP VAO 1 SO > 0\n");
 			f=1;
 			continue;			
 			//scanf("%d", &n);
@@ -19,7 +19,7 @@ int main(){
 		//printf("%d", n);
 	} while(f==1);
 
-	struct Student list[n];
+	std list[n];
 	int i;
 	printf("\n");
 
@@ -31,7 +31,7 @@ int main(){
         	//scanf("%d", &list[i].id);
         	//KHI INPUT khac so scanf tra ve gia tri khong xac dinh, sscanf tra ve 0
         	list[i].id = isInteger();
-        	if (list[i].id == 0){
+        	if (list[i].id <0){
         		printf("HAY NHAP VAO 1 SO. \n");
         		f=1;
 			}
@@ -86,8 +86,8 @@ int main(){
         	f=0;
 	        printf("Nhap vao tuoi sv %d: ", i+1);
 	        list[i].age = isInteger();
-	        if (list[i].age == 0){
-	    		printf("HAY NHAP VAO 1 SO. \n");
+	        if (list[i].age < 0){
+	    		printf("HAY NHAP VAO 1 SO > 0 \n");
 	    		f=1;
 			}
 	    }while(f==1);
@@ -96,8 +96,8 @@ int main(){
         	f=0;
 	        printf("Nhap vao lop sv %d: ", i+1);
 	        list[i].grade = isInteger();
-	        if (list[i].grade == 0){
-	    		printf("HAY NHAP VAO 1 SO. \n");
+	        if (list[i].grade <0){
+	    		printf("HAY NHAP VAO 1 SO >= 0 \n");
 	    		f=1;
 			}
 	    }while(f==1);
@@ -106,8 +106,8 @@ int main(){
         	f=0;
 	        printf("Nhap diem cua sv %d: ", i+1);
 	        list[i].mark = isFloat();
-	        if (list[i].mark == 0){
-	    		printf("HAY NHAP VAO 1 SO. \n");
+	        if (list[i].mark <0){
+	    		printf("HAY NHAP VAO 1 SO >= 0 \n");
 	    		f=1;
 			}
 	    }while(f==1);
@@ -123,8 +123,8 @@ int main(){
 		printf("1. Cap nhat thong tin \n2. Sap xep sinh vien theo ten \n3. Sap xep sinh vien theo id \n4. Tim kiem sinh vien theo ten \n5. Tim kiem sinh vien theo id \n0. Ket thuc");
 		printf("\n");
 		req = isInteger();
-		if(req == 0){
-			printf("HAY NHAP VAO 1 SO: \n");
+		if(req < 0){
+			printf("HAY NHAP VAO 1 YEU CAU. \n");
 			signal = 0;
 			continue;
 		}

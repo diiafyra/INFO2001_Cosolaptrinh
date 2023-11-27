@@ -11,6 +11,7 @@ typedef struct Employee{
     int salary;
 	};
 
+int isInteger();
 int countSpaces(char arr[], int n);
 void swapStruct(struct Employee list[], int n, int m);
 void deleteStruct(struct Employee list[], int n);

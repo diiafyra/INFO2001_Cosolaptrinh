@@ -12,7 +12,7 @@ int isInteger() {
     if (result == 1) {
         return a;
     } else {
-        return 0;
+    	return -1;
     }
 }
 
@@ -26,7 +26,7 @@ float isFloat() {
     if (result == 1) {
         return a;
     } else {
-        return 0;
+        return -1;
     }
 }
 
@@ -43,7 +43,7 @@ int countSpaces(char arr[], int n) {
 }
 
 //su dung trong cac ham sap xep sinh vien
-void swapStruct(struct Student list[], int n, int m){
+void swapStruct(std list[], int n, int m){
 	int temp1 = list[n].id;
 	list[n].id = list[m].id;
 	list[m].id = temp1;
@@ -77,7 +77,7 @@ void swapStruct(struct Student list[], int n, int m){
 
 
 //su dung lai cac ham tim sinh vien sap xep sinh vien
-void displayData(struct Student list){
+void displayData(std list){
 	int i;
 	//for(i=0; i<n; i++){
 	    printf("Ma sinh vien: %d\n", list.id);
@@ -104,10 +104,18 @@ void displayData(struct Student list){
 }
 
 
-void findStdId(struct Student list[], int n){
-	printf("Nhap vao id can tim: ");
+void findStdId(std list[], int n){
+	int flag =0;
 	int a;
-	scanf("%d", &a);
+	do{
+		flag = 0;
+		printf("Nhap vao id can tim: ");
+		a = isInteger();
+		if(a < 0){
+			printf("HAY NHAP VAO 1 SO >=0: \n");
+			flag = 1;
+		} 
+	} while(flag == 1);
     int i;
     int f=0;
     for(i=0; i<n; i++){
@@ -116,13 +124,13 @@ void findStdId(struct Student list[], int n){
             f = 1;
         }
     }
-    if(f = 0){
-    	printf("khong co sv nao co id nhu tren");
+    if(f == 0){
+    	printf("khong co sv nao co id nhu tren \n");
     }
 }
 
 
-void updateData(struct Student list[], int n){
+void updateData(std list[], int n){
 	printf("Nhap vao id sinh vien can thay doi thong tin: ");
 	int a;
 	scanf("%d", &a);
@@ -175,8 +183,8 @@ void updateData(struct Student list[], int n){
 		        printf("Nhap vao tuoi sv %d: ", i+1);
 		        list[i].age = isInteger();
 
-		        if (list[i].age == 0){
-		    		printf("HAY NHAP VAO 1 SO. \n");
+		        if (list[i].age <0){
+		    		printf("HAY NHAP VAO 1 SO >= 0 \n");
 		    		f=1;
 				}
 		    }while(f==1);
@@ -186,8 +194,8 @@ void updateData(struct Student list[], int n){
 		        printf("Nhap vao lop sv %d: ", i+1);
 		        list[i].grade = isInteger();
 
-		        if (list[i].grade == 0){
-		    		printf("HAY NHAP VAO 1 SO. \n");
+		        if (list[i].grade < 0){
+		    		printf("HAY NHAP VAO 1 SO > 0 \n");
 		    		f=1;
 				}
 		    }while(f==1);
@@ -197,8 +205,8 @@ void updateData(struct Student list[], int n){
 		        printf("Nhap diem cua sv %d: ", i+1);
 		        list[i].mark = isFloat();
 
-		        if (list[i].mark == 0){
-		    		printf("HAY NHAP VAO 1 SO. \n");
+		        if (list[i].mark < 0){
+		    		printf("HAY NHAP VAO 1 SO >= 0 \n");
 		    		f=1;
 				}		        
 		    }while(f==1);
@@ -211,10 +219,11 @@ void updateData(struct Student list[], int n){
     }
 }
 
-void findStdName(struct Student list[], int n){
+void findStdName(std list[], int n){
 	printf("Nhap vao ten sv can tim: ");
-	getchar();
+	//getchar();
 	char name[50];
+	//getchar();
 	fgets(name, 50, stdin);
 	//printf("%s", name);
     int i;
@@ -228,17 +237,19 @@ void findStdName(struct Student list[], int n){
 	    	strcat(fullName, list[i].name[a]);
 	    }
 	    //printf("%s", fullName);
-        if(strcmp(name, fullName) ==0){
+	    //printf("%d", strcmp(name, fullName));
+	    //printf("%s", name);
+        if(strcmp(name, fullName) == 0){
             displayData(list[i]);
             f = 1;
         }
     }
-    if(f = 0){
-    	printf("khong co sv nao co ten nhu tren");
+    if(f == 0){
+    	printf("Khong co sv nao co ten nhu tren\n");
     }
 }
 
-void sortMarkUp(struct Student list[], int n){
+void sortMarkUp(std list[], int n){
 	int i, j, min_idx;
 	for(i=0; i<n-1; i++){
 		min_idx = i;
@@ -287,7 +298,7 @@ void sortMarkUp(struct Student list[], int n){
 }
 
 
-void sortMarkDown(struct Student list[], int n){
+void sortMarkDown(std list[], int n){
 	sortMarkUp(list, n);
 	int start = 0;
 	int end = n-1;
@@ -299,7 +310,7 @@ void sortMarkDown(struct Student list[], int n){
 	}
 }
 
-void sortNameAZ(struct Student list[], int n){
+void sortNameAZ(std list[], int n){
 	int i, j;
 	int a=0;
 	int f=0;
@@ -321,7 +332,7 @@ void sortNameAZ(struct Student list[], int n){
 	}
 }
 
-void sortNameZA(struct Student list[], int n){
+void sortNameZA(std list[], int n){
 	int i, j;
 	int a=0;
 	int f=0;

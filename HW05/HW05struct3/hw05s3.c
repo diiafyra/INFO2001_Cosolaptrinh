@@ -2,6 +2,19 @@
 #include <string.h>
 #include "hw05s3.h"
 
+int isInteger() {
+	char check[50];
+	//getchar();
+	int a;//
+    fgets(check, 50, stdin);
+    int result = sscanf(check, "%d", &a);
+    if (result == 1) {
+        return a;
+    } else {
+    	return -1;
+    }
+}
+
 int countSpaces(char arr[], int n) {
     int count = 0;
     int i;
@@ -84,7 +97,7 @@ void displayData(struct Employee list){
             f = 1;
         }
     }
-    if(f = 0 || list[i].role != "\0"){
+    if(f == 0 || list[i].role != "\0"){
     	printf("Khong co nv nao co id nhu tren \n");
     }
     getchar();
@@ -102,12 +115,9 @@ void addP(struct Employee list[], int n) {
         printf("Nhap vao id nv %d: ", i + 1);
         //scanf("%d", &list[i].id);
         //KHI INPUT khac so scanf tra ve gia tri khong xac dinh, sscanf tra ve 0
-        char input[50];
-        fgets(input, 50, stdin);
-        int check = sscanf(input, "%d", &list[i].id);
-
-        if (check != 1) {
-            printf("HAY NHAP VAO 1 SO. \n");
+        list[i].id = isInteger();
+        if (list[i].id < 0) {
+            printf("HAY NHAP VAO 1 SO >=0 \n");
             f = 1;
         }
         for (b = 0; b < i; b++) {
@@ -170,11 +180,9 @@ void addP(struct Employee list[], int n) {
 
     do {
         f = 0;
-        char input[20];
-        printf("Nhap vao luong cua nv %d: ", i + 1);
-        fgets(input, 20, stdin);
-        int check = sscanf(input, "%d", &list[i].salary);
-        if (check != 1) {
+        printf("Nhap vao luong cua nhan vien %d: ", i+1);
+        list[i].salary = isInteger();
+        if (list[i].salary < 0) {
             printf("HAY NHAP VAO 1 SO. \n");
             f = 1;
         }
@@ -185,9 +193,17 @@ void addP(struct Employee list[], int n) {
 }
 
 void deleteP(struct Employee list[], int n){
-    printf("Nhap vao id nv can xoa: ");
-    int a;
-    scanf("%d", &a);
+	int flag = 0;
+	int a;
+	do{
+		flag = 0;
+	    printf("Nhap vao id nv can xoa: ");
+	    a = isInteger();
+	    if(a < 0){
+	    	printf("NHAP VAO 1 SO >= 0.");
+	    	flag = 1;
+		}
+	} while(flag == 1);
     int k;
     int f=0;
     for(k=0; k<n; k++){

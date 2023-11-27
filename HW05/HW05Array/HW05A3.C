@@ -10,7 +10,7 @@ int isInteger() {
     if (result == 1) {
         return a;
     } else {
-        return 0;
+        return -1;
     }
 }
 float isFloat() {
@@ -22,7 +22,7 @@ float isFloat() {
     if (result == 1) {
         return a;
     } else {
-        return 0;
+        return 1;
     }
 }
 
@@ -33,7 +33,7 @@ int main(){
 		printf("Nhap vao so luong sinh vien: ");
 		flag = 1;
 		n = isInteger();
-		if(n == 0){
+		if(n <0){
 			printf("Nhap sai dinh dang: \n");
 			flag = 0;
 		}
@@ -44,7 +44,7 @@ int main(){
 			printf("Nhap vao diem cua sv %d tren thang 10: ", i+1);
 			flag = 1;
 			arr[i] = isFloat();
-			if(arr[i]==0|| arr[i] > 10){
+			if(arr[i] > 10 || arr[i]<0){
 				printf("Hay nhap dung yeu cau \n");
 				flag = 0;
 			}

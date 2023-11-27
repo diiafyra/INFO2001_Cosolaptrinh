@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "hw05s3.h"
+#include  <stdlib.h>
 
 
 int main(){
