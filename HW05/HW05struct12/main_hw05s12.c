@@ -8,16 +8,15 @@ int main(){
 	do{
 		f=0;
 		printf("Nhap vao so sv: ");
-		char input[50]; //input la bien cuc bo
-    	fgets(input, 50, stdin);
-    	int check = sscanf(input, "%d", &n);
-    	//printf("%d", check);
-    	//printf("%d", n);
-    	//khong can getchar
-    	if (check != 1){
-    		printf("HAY NHAP VAO 1 SO. \n");
-    		f=1;
-		}
+		n = isInteger(); //neu de isInteger vao if else thi se khien doc 2 lan ham isInteger
+		if(n == 0){
+			//printf("%d", isInteger(input));
+			printf("HAY NHAP VAO 1 SO. \n");
+			f=1;
+			continue;			
+			//scanf("%d", &n);
+		} 
+		//printf("%d", n);
 	} while(f==1);
 
 	struct Student list[n];
@@ -31,11 +30,8 @@ int main(){
     		printf("Nhap vao id sv %d: ", i+1);
         	//scanf("%d", &list[i].id);
         	//KHI INPUT khac so scanf tra ve gia tri khong xac dinh, sscanf tra ve 0
-        	char input[50];
-        	fgets(input, 50, stdin);
-        	int check = sscanf(input, "%d", &list[i].id);
-
-        	if (check != 1){
+        	list[i].id = isInteger();
+        	if (list[i].id == 0){
         		printf("HAY NHAP VAO 1 SO. \n");
         		f=1;
 			}
@@ -88,11 +84,9 @@ int main(){
 
         do{
         	f=0;
-        	char input[20];
 	        printf("Nhap vao tuoi sv %d: ", i+1);
-	        fgets(input, 20, stdin);
-	        int check = sscanf(input, "%d", &list[i].age);
-	        if (check != 1){
+	        list[i].age = isInteger();
+	        if (list[i].age == 0){
 	    		printf("HAY NHAP VAO 1 SO. \n");
 	    		f=1;
 			}
@@ -100,11 +94,9 @@ int main(){
 
 	    do{
         	f=0;
-        	char input[20];
 	        printf("Nhap vao lop sv %d: ", i+1);
-	        fgets(input, 20, stdin);
-	        int check = sscanf(input, "%d", &list[i].grade);
-	        if (check != 1){
+	        list[i].grade = isInteger();
+	        if (list[i].grade == 0){
 	    		printf("HAY NHAP VAO 1 SO. \n");
 	    		f=1;
 			}
@@ -112,11 +104,9 @@ int main(){
 
 	    do{
         	f=0;
-        	char input[20];
 	        printf("Nhap diem cua sv %d: ", i+1);
-	        fgets(input, 20, stdin);
-	        int check = sscanf(input, "%f", &list[i].mark);
-	        if (check != 1){
+	        list[i].mark = isFloat();
+	        if (list[i].mark == 0){
 	    		printf("HAY NHAP VAO 1 SO. \n");
 	    		f=1;
 			}

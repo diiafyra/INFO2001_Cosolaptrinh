@@ -7,9 +7,11 @@ typedef struct Student {
     int nameWords;
     int age;
     int grade;
-    float mark;
+    float mark; 
 };
 
+float isFloat();
+int isInteger();
 int countSpaces(char arr[], int n);
 void swapStruct(struct Student list[], int n, int m);
 void displayData(struct Student list);

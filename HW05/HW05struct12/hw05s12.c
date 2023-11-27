@@ -2,6 +2,35 @@
 #include <string.h>
 #include "hw05s12.h"
 
+//check dau vao
+int isInteger() {
+	char check[50];
+	//getchar();
+	int a;//
+    fgets(check, 50, stdin);
+    int result = sscanf(check, "%d", &a);
+    if (result == 1) {
+        return a;
+    } else {
+        return 0;
+    }
+}
+
+//check dau vao
+float isFloat() {
+	char check[50];
+	//getchar();
+	float a;//
+    fgets(check, 50, stdin);
+    int result = sscanf(check, "%f", &a);
+    if (result == 1) {
+        return a;
+    } else {
+        return 0;
+    }
+}
+
+// su dung lai khi luu tru ten vao mang 2 chieu
 int countSpaces(char arr[], int n) {
     int count = 0;
     int i;
@@ -13,6 +42,7 @@ int countSpaces(char arr[], int n) {
     return count;
 }
 
+//su dung trong cac ham sap xep sinh vien
 void swapStruct(struct Student list[], int n, int m){
 	int temp1 = list[n].id;
 	list[n].id = list[m].id;
@@ -46,7 +76,7 @@ void swapStruct(struct Student list[], int n, int m){
 }
 
 
-
+//su dung lai cac ham tim sinh vien sap xep sinh vien
 void displayData(struct Student list){
 	int i;
 	//for(i=0; i<n; i++){
@@ -73,6 +103,7 @@ void displayData(struct Student list){
 	//}
 }
 
+
 void findStdId(struct Student list[], int n){
 	printf("Nhap vao id can tim: ");
 	int a;
@@ -90,6 +121,7 @@ void findStdId(struct Student list[], int n){
     }
 }
 
+
 void updateData(struct Student list[], int n){
 	printf("Nhap vao id sinh vien can thay doi thong tin: ");
 	int a;
@@ -100,22 +132,22 @@ void updateData(struct Student list[], int n){
         if (list[i].id == a) {
         	f = 1;
         	
-		char demo[50];
-		do{
-			f=0;
-	        printf("Nhap vao ten sv %d: ", i+1);
-	        getchar();
-	        fgets(demo, 50, stdin);
-	        int demo1;
-	        int check = sscanf(demo, "%d", &demo1);
-	        //printf("%d", check);
-	        if(check != 0){
-	        	printf("HAY NHAP VAO CHUOI KI TU. \n");
-	        	f=1;
-			} else{
+			char demo[50];
+			do{
 				f=0;
-			}
-		} while(f == 1);
+		        printf("Nhap vao ten sv %d: ", i+1);
+		        getchar();
+		        fgets(demo, 50, stdin);
+		        int demo1;
+		        int check = sscanf(demo, "%d", &demo1);
+		        //printf("%d", check);
+		        if(check != 0){
+		        	printf("HAY NHAP VAO CHUOI KI TU. \n");
+		        	f=1;
+				} else{
+					f=0;
+				}
+			} while(f == 1);
         
         
 	        char temp[50];
@@ -123,8 +155,6 @@ void updateData(struct Student list[], int n){
 		    //char chuoi[30] = "Nguyen Trang";
 		    list[i].nameWords = countSpaces(demo, 50);
 		    int x = countSpaces(demo, 50);
-		    //printf("%d", x);
-		    //printf("Nhap ten day du: ");
 		    int a;
 		    for (a = 0; a <= strlen(demo); a++) {
 		        if (demo[a] != ' ' && demo[a] != '\0') {
@@ -141,12 +171,11 @@ void updateData(struct Student list[], int n){
 	
 	        do{
 	        	f=0;
-	        	char input[20];
-	        	int in;
+
 		        printf("Nhap vao tuoi sv %d: ", i+1);
-		        fgets(input, 20, stdin);
-		        int check = sscanf(input, "%d", &in);
-		        if (check != 1){
+		        list[i].age = isInteger();
+
+		        if (list[i].age == 0){
 		    		printf("HAY NHAP VAO 1 SO. \n");
 		    		f=1;
 				}
@@ -154,12 +183,10 @@ void updateData(struct Student list[], int n){
 		    
 		    do{
 	        	f=0;
-	        	char input[20];
-	        	int in;
 		        printf("Nhap vao lop sv %d: ", i+1);
-		        fgets(input, 20, stdin);
-		        int check = sscanf(input, "%d", &in);
-		        if (check != 1){
+		        list[i].grade = isInteger();
+
+		        if (list[i].grade == 0){
 		    		printf("HAY NHAP VAO 1 SO. \n");
 		    		f=1;
 				}
@@ -167,15 +194,13 @@ void updateData(struct Student list[], int n){
 		    
 		    do{
 	        	f=0;
-	        	char input[20];
-	        	int in;
 		        printf("Nhap diem cua sv %d: ", i+1);
-		        fgets(input, 20, stdin);
-		        int check = sscanf(input, "%f", &in);
-		        if (check != 1){
+		        list[i].mark = isFloat();
+
+		        if (list[i].mark == 0){
 		    		printf("HAY NHAP VAO 1 SO. \n");
 		    		f=1;
-				}
+				}		        
 		    }while(f==1);
 			
 			printf("%s", "\n");     
@@ -269,13 +294,6 @@ void sortMarkDown(struct Student list[], int n){
 	
 	while(start < end){
 		swapStruct(list, start, end);
-		
-		/*char temp2[50];
-		strcpy(temp2, list[start].name);
-		strcpy(list[start].name, list[end].name);
-		strcpy(list[end].name, temp2);	//them ghi chu
-		*/
-		
 		start++;
 		end--;	
 	}
